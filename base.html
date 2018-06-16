@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css'%}">
+  {% block head %}
+  <title>base</title>
+  {% endblock %}
+  </head>
+  <body>
+    <br>
+    <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="{%url 'accounts:home'%}">Social Network </a>
+        </div>
+        {%if user.is_authenticated%}
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/accounts">Home</a></li>
+          <li><a href="{%url 'accounts:login'%}">Login</a></li>
+          <li><a href="{%url 'accounts:view_profile'%}">Profile</a></li>
+          <li><a href="{%url 'accounts:work_in_progress'%}">Edit Profile</a></li>
+          <li><a href="{%url 'accounts:work_in_progress'%}">Change Password</a></li>
+          <li><a href="{%url 'accounts:work_in_progress'%}">Edit Password</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{%url 'accounts:logout'%}">Logout</a></li>
+        </ul>
+        {%else%}
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{%url 'accounts:login'%}">Login</a></li>
+          <li><a href="{%url 'accounts:register'%}">Register</a></li>
+        </ul>
+        {%endif%}
+      </div>
+    </nav>
+    </div>
+    <br>
+
+  {% block body %}
+  {% endblock %}
+
+  </body>
+</html>
